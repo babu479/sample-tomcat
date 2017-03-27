@@ -61,7 +61,7 @@ public class IndexController {
     		model.addAttribute("instanceIds", Collections.<String>emptyList());
     		return "/index";
     	}
-        
+
         final GetDeploymentGroupResult getResult = codeDeploy.getDeploymentGroup(new GetDeploymentGroupRequest()
                 .withApplicationName(applicationName)
                 .withDeploymentGroupName(deploymentGroupName));
@@ -80,7 +80,7 @@ public class IndexController {
             }
         }
         for (final AutoScalingGroup codeDeployGroup : getResult.getDeploymentGroupInfo().getAutoScalingGroups()) {
-            LOGGER.info("Calling AutoScaling Describe Auto Scaling Groups with Auto Scaling Group Name " + codeDeployGroup.getName()); 
+            LOGGER.info("Calling AutoScaling Describe Auto Scaling Groups with Auto Scaling Group Name " + codeDeployGroup.getName());
             final DescribeAutoScalingGroupsResult describeResult = autoScaling.describeAutoScalingGroups(new DescribeAutoScalingGroupsRequest()
                     .withAutoScalingGroupNames(codeDeployGroup.getName()));
             for (final com.amazonaws.services.autoscaling.model.AutoScalingGroup autoScalingGroup : describeResult.getAutoScalingGroups()) {
