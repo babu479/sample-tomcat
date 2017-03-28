@@ -11,6 +11,7 @@ hooks:
       timeout: 300
   BeforeInstall:
     - location: scripts/install_dependencies
+    - location: scripts/delete_old.sh
       timeout: 300
   ApplicationStart:
     - location: scripts/write_codedeploy_config.sh
